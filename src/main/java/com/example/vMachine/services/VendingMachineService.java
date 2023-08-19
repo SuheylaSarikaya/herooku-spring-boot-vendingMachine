@@ -29,13 +29,13 @@ public class VendingMachineService {
     }
     private ProductDTO entityToDTO(Product product) throws IOException {
 
-        byte[] fileContent = FileUtils.readFileToByteArray(new File(product.getImg()));
+       // byte[] fileContent = FileUtils.readFileToByteArray(new File(product.getImg()));
 
-        String encodedString = Base64.getEncoder().encodeToString(fileContent);
+      //  String encodedString = Base64.getEncoder().encodeToString(fileContent);
         ProductDTO productDTO = new ProductDTO();
         productDTO.setId(product.getId());
         productDTO.setName(product.getName());
-        productDTO.setImg(encodedString);
+        productDTO.setImg(product.getImg());
         productDTO.setPrice(product.getPrice());
         productDTO.setCount(product.getCount());
         productDTO.setTemperature(product.getTemperature());
@@ -53,16 +53,18 @@ public class VendingMachineService {
         List<ProductDTO> productsDTOs= new ArrayList<>();
 
 
-        int n= products.size();
-        for(int i=0; i==n; i++) {
+        products.forEach( (product) -> {
+
+
             ProductDTO productDTO= null;
             try {
-                productDTO = entityToDTO(products.get(i));
+                productDTO = entityToDTO(product);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
             productsDTOs.add(productDTO);
-        };
+         });
 
         return productsDTOs;
     }
