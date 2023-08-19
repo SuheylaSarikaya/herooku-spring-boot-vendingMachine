@@ -10,6 +10,9 @@ import javax.persistence.*;
 @Table(name="products")
 @Data
 public class Product {
+    public Product() {
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @NotNull
@@ -26,4 +29,6 @@ public class Product {
     private String img;
     @NotNull
     private int capacity;
+
+
 }
