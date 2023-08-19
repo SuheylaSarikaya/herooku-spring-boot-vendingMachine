@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Data
 public class Product {
     public Product() {
-
     }
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
