@@ -42,10 +42,12 @@ public class VendingMachineService {
         byte[] fileContent = FileUtils.readFileToByteArray(new File(product.getImg()));
 
         String encodedString = Base64.getEncoder().encodeToString(fileContent); */
+        String[] arrOfStr = product.getImg().split("/",7);
+        String myStr="https://drive.google.com/uc?export=view&id="+arrOfStr[5];
         ProductDTO productDTO = new ProductDTO();
         productDTO.setId(product.getId());
         productDTO.setName(product.getName());
-        productDTO.setImg(product.getImg());
+        productDTO.setImg(myStr);
         productDTO.setPrice(product.getPrice());
         productDTO.setCount(product.getCount());
         productDTO.setTemperature(product.getTemperature());
