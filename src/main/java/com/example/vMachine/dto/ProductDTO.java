@@ -11,15 +11,15 @@ import lombok.*;
 public class ProductDTO {
     @NotNull
     private Long id;
-    @NotNull
+
     private int count;
-    @NotNull
+
     private String name;
-    @NotNull
+
     private String img;
-    @NotNull
-    private Double price;
-    @NotNull
+
+    private int price;
+
     private int temperature;
 
 }

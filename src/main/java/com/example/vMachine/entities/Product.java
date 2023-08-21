@@ -16,12 +16,12 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @NotNull
     private Long id;
-    @NotNull
+
     private int count;
     @NotNull
     private String name;
     @NotNull
-    private Double price;
+    private int price;
     @NotNull
     private int temperature;
 

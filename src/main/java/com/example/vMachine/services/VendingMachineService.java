@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VendingMachineService {
@@ -28,10 +29,12 @@ public class VendingMachineService {
     private ProductRepository productRepository;
 
     private APIResponse apiResponse;
-    private final MachineRepository machineRepository;
+    private  MachineRepository machineRepository;
 
-    private VendingMachineService(UserRepository userRepository, ProductRepository productRepository, APIResponse apiResponse,
-                                  MachineRepository machineRepository){
+
+
+    public VendingMachineService(UserRepository userRepository, ProductRepository productRepository, APIResponse apiResponse,
+                                 MachineRepository machineRepository){
         this.userRepository =userRepository;
         this.productRepository=productRepository;
         this.apiResponse=apiResponse;
@@ -91,6 +94,7 @@ public class VendingMachineService {
             apiResponse.addInformationMessage("User is logged in.");
         }else{
             apiResponse.addErrorMessage("User login failed.");
+            apiResponse.hasErrorMessage(true);
         }
         return apiResponse.createServiceResult();
     }
@@ -130,6 +134,7 @@ public class VendingMachineService {
         if (product.getCount() <= 0) {
             apiResponse.addErrorMessage("The product is not available.");
         }else {
+
             product.setCount(product.getCount() - 1);
             productRepository.save(product);
 

@@ -12,6 +12,8 @@ public class APIResponse {
 
     private String text;
 
+    private Boolean error;
+
     public APIResponseDTO createServiceResult(){
 
         return new APIResponseDTO(text);
@@ -23,6 +25,15 @@ public class APIResponse {
 
     public void addErrorMessage(String messages){
         text="ERROR : " + messages;
+    }
+
+    public boolean hasErrorMessage(Boolean hasError){
+        if(hasError==true){
+            error=true;
+        }else{
+            error=false;
+        }
+        return error;
     }
 
 }
